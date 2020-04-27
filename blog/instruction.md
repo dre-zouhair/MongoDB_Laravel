@@ -31,6 +31,16 @@ php artisan migrate
 ```
 In MongoDB shell execute this 
 ```jacascript
+db.users.createIndex({ "name" : 1 } );
+db.users.createIndex({ "profession" : 1 } );
+db.users.createIndex({ "cin" : 1 } );
+db.medicines.createIndex({"active_substance": 1},);
+db.medicines.createIndex({"price": 1},);
+db.medicines.createIndex({"barre_code": 1},);
+db.medicines.createIndex({"prescription": 1},);
+db.medicines.createIndex({"rss": 1},);
+db.medicines.createIndex({"laboratory.name":1},);
+db.medicines.createIndex({"laboratory.designation":1});
 db.getCollection("users").insert({
     "name": "Drioueche Zouhair",
     "email": "dre.zouhair@gmail.com",
