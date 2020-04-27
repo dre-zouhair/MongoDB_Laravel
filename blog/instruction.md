@@ -1,4 +1,4 @@
- cd into your project
+cd into your project
 ```bash
 cd blog
 ```
@@ -38,17 +38,31 @@ db.getCollection("users").insert({
     "updated_at": ISODate("2020-04-27T01:27:40.564+00:00"),
     "created_at": ISODate("2020-04-26T21:58:23.993+00:00"),
     "cin": "pharmacist",
-    "phone": "062598143289",
+    "phone": "0625981489",
     "profession": "pharmacist",
     "remember_token": "",
     "is_admin": 1
+});
+db.getCollection("medicines").insert({
+    "commercial_name": "ACOL 1000 MG, Comprimé pelliculé",
+    "active_substance": "Sulpiride",
+    "price": "32.90",
+    "barre_code": "64351234567",
+    "prescription": "with",
+    "rss": "10",
+    "laboratory": {
+        "name": "SANOFI",
+        "designation": "SNF"
+    },
+    "updated_at": ISODate("2020-04-27T19:54:42.753+00:00"),
+    "created_at": ISODate("2020-04-27T19:54:42.753+00:00")
 });
 ```
 run this in the terminal
 ```bash
 php artisan serve
 ```
-Login credentiels
+Login credentials
     email : dre.zouhair@gmail.com
     password : 12345678
 <br />
