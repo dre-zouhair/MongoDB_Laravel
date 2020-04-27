@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Medicine as Medicament;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 class MedicineController extends Controller
@@ -61,6 +62,7 @@ class MedicineController extends Controller
                "barre_code" => $request->input('barre_code'),
                "prescription" => $request->input('prescription'),
                "rss" => $request->input('rss'),
+               'employee'=>Auth::user()->_id,
                "laboratory" => [
                    "name"=> $request->input('name'),
                    "designation" => $request->input('designation')

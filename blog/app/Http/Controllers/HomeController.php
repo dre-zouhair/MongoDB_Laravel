@@ -6,7 +6,6 @@ use App\Medicine;
 use App\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Array_;
-use function Sodium\add;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
@@ -42,7 +41,7 @@ class HomeController extends Controller
             if(sizeof($data) == 0) $data = [];
             $response = ['success'=>true, 'data'=>['labels'=>$labels,'data'=>$data]];
             return response()->json($response, 201);
-        }catch (Exception $e){
+        }catch (\Throwable $e){
             $response = ['success'=>false, 'data'=>'<div class="alert alert-danger alert-dismissible show" role="alert">
                                   <strong>Ooops !  </strong>something went wrong
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -69,7 +68,7 @@ class HomeController extends Controller
 
             $response = ['success'=>true, 'data'=>['labels'=>$labels,'data'=>$data]];
             return response()->json($response, 201);
-        }catch (Exception $e){
+        }catch (\Throwable $e){
 
             $response = ['success'=>false, 'data'=>'<div class="alert alert-danger alert-dismissible show" role="alert">
                                   <strong>Ooops !  </strong>something went wrong
@@ -78,6 +77,35 @@ class HomeController extends Controller
                                     </button>
                                 </div>'];
             return response()->json($response, 501);
+
+        }
+    }
+    public function chartmedicines()
+    {
+
+        try{
+
+            $labels = Array();
+            $data = Array();
+            $user = Medicine::select('employee')->get();
+            foreach($user->groupBy('employee')->map(function($values) {return $values->count(); }) as $key => $value){
+
+                array_push($data,$value);
+                array_push($labels,User::find($key)->name);
+            }
+
+            $response = ['success'=>true, 'data'=>['labels'=>$labels,'data'=>$data]];
+            return response()->json($response, 201);
+        }catch (\Throwable $e){
+
+
+            $response = ['success'=>false, 'data'=>'<div class="alert alert-danger alert-dismissible show" role="alert">
+                                  <strong>Ooops !  </strong>something went wrong
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>'];
+            return response()->json($response, 500);
 
         }
     }

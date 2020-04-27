@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('medicine/show', 'MedicineController@show')->name('medicineshow');//
         Route::get('dashboard/chart', 'HomeController@chart')->name('chart');//
         Route::get('dashboard/chartuser', 'HomeController@chartuser')->name('chartuser');//
+        Route::get('dashboard/chartmedicines', 'HomeController@chartmedicines')->name('chartmedicines');//
         Route::group(['middleware' => ['admin']], function () {
             Route::get('user', 'UserController@index')->name('user');//
             Route::get('user/destroy', 'UserController@destroy')->name('userdestroy');//

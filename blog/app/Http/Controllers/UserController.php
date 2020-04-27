@@ -37,10 +37,10 @@ class UserController extends Controller
         if($request->get('button_action') == 'insert')
         {
             $validatedData = $request->validate([
-                'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'profession'=>['required','string','max:50'],
-                'cin'=>['required','regex:/string/','max:50'],
+                'cin'=>['required','string','max:50'],
                 'phone' => 'required|regex:/(0)[0-9]{9}/',
                 'is_admin' => 'required',
                 'password' => ['required', 'string', 'min:8', 'confirmed']
@@ -52,6 +52,7 @@ class UserController extends Controller
                     'email' =>  $request->input('email'),
                     'phone' =>  $request->input('phone'),
                     'is_admin'=>$request->input('is_admin'),
+                    'remember_token'=>"",
                     'password'=> Hash::make($request->input('password'))
                 ];
 

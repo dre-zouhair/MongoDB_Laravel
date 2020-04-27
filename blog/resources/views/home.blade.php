@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+            <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 Search
             </a>
@@ -76,9 +76,9 @@
                 </ul>
             </div>
         </div>
-    </nav>
+        </nav>
         <div class="container">
-    <div class="row justify-content-center">
+            <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Refunded medicines') }}</div>
@@ -99,7 +99,21 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">{{ __('Added medicines By employee') }}</div>
+                        <div class="card-body" id="pie">
+                            <canvas id="medicines_chart"></canvas>
+                            <span id="medicine_form_output"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
@@ -153,7 +167,7 @@
             method: 'get',
             dataType: 'json',
             success:function (response) {
-                console.log(response.data.data);
+
 
                 var ict_unit = [];
                 var efficiency = [];
@@ -209,6 +223,72 @@
                 console.log(error);
                 document.getElementById('UsersChart').remove();
                 document.getElementById('form_output').innerHTML = error.responseJSON.data;
+            }
+        });
+
+        $.ajax({
+            url:"{{route('chartmedicines')}}",
+            method: 'get',
+            dataType: 'json',
+            success:function (response) {
+                console.log(response.data);
+
+                var ict_unit = [];
+                var efficiency = [];
+                var coloR = [];
+                var items=   [ "rgba(74,78,77,0.5)" ,"rgba(0,233,170,0.74)" , "rgba(61,164,171,0.8)" ,
+                    "rgba(254,138,113,0.94)" , "rgba(254,74,73,0.94)" , "rgba(42,183,202,0.93)" ,"rgba(15,237,118,0.94)" ,
+                    "rgb(230,230,234)" , "rgb(208,225,249)" ,"rgba(4,214,72,0.93)" ,
+                    "rgba(40,54,85,0.9)","rgba(255,51,119,0.9)" , "rgba(255,85,136,0.89)","rgba(168,230,207,0.91)" ,
+                    "rgb(220,237,193)" , "rgba(255,211,182,0.95)" , "rgba(255,170,165,0.93)" , "rgba(255,139,148,0.97)",
+                    "rgba(3,245,215,0.91)" , "rgba(39,155,97,0.93)" , "rgba(0,138,184,0.89)" , "rgba(153,51,51,0.8)" ,
+                    "rgba(163,228,150,0.87)" , "rgba(149,202,228,0.95)" , "rgba(204,51,51,0.78)" ,"rgba(15,252,195,0.9)" ,
+                    "rgba(255,255,122,0.88)" , "rgba(204,102,153,0.91)" ];
+                var indice = 0;
+                var dynamicColors = function() {
+
+
+                    var item = items[indice];
+                    indice++;
+                    return item;
+                };
+                for (var i in response.data.data) {
+                    ict_unit.push("ICT Unit " + response.data.data[i].ict_unit);
+                    efficiency.push(response.data.data[i].efficiency);
+                    coloR.push(dynamicColors());
+                }
+                var ctx = document.getElementById('medicines_chart').getContext('2d');
+                if(response.data.data.length > 0)
+                    var UsersChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: response.data.labels,
+                            datasets: [{
+                                data: response.data.data,
+                                backgroundColor: coloR
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },legend: { display: false }
+                        }
+                    });
+                else {
+                    document.getElementById('medicines_chart').remove();
+                    document.getElementById('medicine_form_output').innerHTML = "<div class='alert alert-danger alert-dismissible show' role='alert'><strong>Ooops No data to display ! : </strong>Insert some Medicines</div>";
+                }
+            },
+            error:function (error) {
+                console.log(error.responseJSON)
+                document.getElementById('medicines_chart').remove();
+                    document.getElementById('medicine_form_output').innerHTML = error.responseJSON.data;
+
+
             }
         });
     </script>
