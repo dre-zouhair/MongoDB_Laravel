@@ -70,7 +70,7 @@ class UserController extends Controller
                 'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
                 'profession'=>['required','string','max:50'],
                 'cin'=>['required','string','max:50'],
-                'phone' => 'required|regex:/(0)[0-9]{9}/'
+                'phone' => 'required|regex:/(0)[0-9]{9}/',
             ]);
             $user = User::find($id = Auth::user()->_id);
             $user->profession = $request->input('profession');
