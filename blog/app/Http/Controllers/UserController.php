@@ -37,10 +37,10 @@ class UserController extends Controller
         if($request->get('button_action') == 'insert')
         {
             $validatedData = $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'profession'=>['required','string','max:50'],
-                'cin'=>['required','string','max:50','unique:users'],
+                'profession'=>['required','regex:/[0-9][a-z]/','max:50'],
+                'cin'=>['required','regex:/[0-9][a-z]/','max:50'],
                 'phone' => 'required|regex:/(0)[0-9]{9}/',
                 'is_admin' => 'required',
                 'password' => ['required', 'string', 'min:8', 'confirmed']
@@ -66,9 +66,9 @@ class UserController extends Controller
         if($request->get('button_action') == 'update')
         {
             $validatedData = $request->validate([
-                'name' => ['required', 'alpha', 'max:255'],
-                'profession'=>['required','string','max:50'],
-                'cin'=>['required','string','max:50'],
+                'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
+                'profession'=>['required','regex:/[0-9][a-z]/','max:50'],
+                'cin'=>['required','regex:/[0-9][a-z]/','max:50'],
                 'phone' => 'required|regex:/(0)[0-9]{9}/'
             ]);
             $user = User::find($id = Auth::user()->_id);
