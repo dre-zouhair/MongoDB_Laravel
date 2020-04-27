@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use  Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     public function  View(){
@@ -25,6 +25,7 @@ class UserController extends Controller
             $datas[$key]['email'] = $value->email;
         }
         return  DataTables($datas)->addColumn('action', function($data){
+            if($data['id'] != Auth::user()->_id)
             return '<a href="#" class="btn btn-xs btn-outline-danger delete" id="'.$data['id'].'"> Delete</a>';
         })->make(true);
 
