@@ -63,7 +63,7 @@ run this in the terminal
 php artisan serve
 ```
 Login credentials
-    email : dre.zouhair@gmail.com
+    email : use one of the given emails
     password : 12345678
 <br />
 ENJOY ! 
