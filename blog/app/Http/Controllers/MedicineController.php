@@ -18,7 +18,7 @@ class MedicineController extends Controller
     public function index()
     {
         $m = Medicament::all();
-        $datas = Array(Array());
+        $datas = Array();
         foreach ($m as $key => $value){
             $datas[$key]['id'] = $value->_id;
             $datas[$key]['commercial_name'] = $value->commercial_name;
@@ -29,6 +29,7 @@ class MedicineController extends Controller
             $datas[$key]['rss'] = $value->rss;
             $datas[$key]['laboratory'] = $value->laboratory['name']." (".$value->laboratory['designation'].")";
         }
+        if(sizeof($datas)==0)$datas = [];
         return  DataTables($datas)->addColumn('action', function($data){
             return '<a href="#" class="btn btn-xs btn-outline-warning edit" style="margin-right: 10px;" id="'.$data['id'].'"> Edit</a>'.'<a href="#" class="btn btn-xs btn-outline-danger delete" id="'.$data['id'].'"> Delete</a>';
         })->make(true);
