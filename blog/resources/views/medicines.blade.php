@@ -121,19 +121,19 @@
                         <span id="form_output"></span>
                         <div class="form-group">
                             <label>The commercial name</label>
-                            <input type="text" name="commercial_name" id="commercial_name" class="form-control" />
+                            <input type="text" name="commercial_name" id="commercial_name" class="form-control" required/>
                         </div>
                         <div class="form-group">
                             <label>The active substance</label>
-                            <input type="text" name="active_substance" id="active_substance" class="form-control" />
+                            <input type="text" name="active_substance" id="active_substance" class="form-control" required/>
                         </div>
                         <div class="form-group">
                             <label>The price</label>
-                            <input type="number" name="price" min="0" id="price" class="form-control" />
+                            <input type="number" name="price" min="0" id="price" class="form-control" step="0.01" required/>
                         </div>
                         <div class="form-group">
                             <label>The barre code</label>
-                            <input type="text" name="barre_code" id="barre_code" class="form-control" />
+                            <input type="text" name="barre_code" id="barre_code" class="form-control" required/>
                         </div>
 
                         <div class="form-group">
@@ -152,15 +152,15 @@
 
                         <div class="form-group">
                             <label>RSS</label>
-                            <input type="number" name="rss" id="rss" min="0" class="form-control" required>
+                            <input type="number" name="rss" id="rss" min="0" class="form-control" step="0.01" required>
                         </div>
                         <div class="form-group">
                             <label>The Laboratory's Name</label>
-                            <input type="text" name="name" id="name" class="form-control" />
+                            <input type="text" name="name" id="name" class="form-control" required/>
                         </div>
                         <div class="form-group">
                             <label>The Laboratory's designation</label>
-                            <input type="text" name="designation" id="designation" class="form-control" />
+                            <input type="text" name="designation" id="designation" class="form-control" required/>
                         </div>
 
                     </div>
