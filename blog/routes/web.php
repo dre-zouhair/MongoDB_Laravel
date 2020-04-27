@@ -16,8 +16,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/medicines', 'MedicineController@View')->name('medicines');
     Route::get('users', 'UserController@View')->name('users')->middleware('admin');
-    Route::get('/medicine', 'MedicineController@index')->name('medicine');//
+
     Route::group(['middleware' => ['ajax']], function () {
+        Route::get('/medicine', 'MedicineController@index')->name('medicine');//
         Route::post('user/profile/changepassword', 'UserController@ChangePassowrd')->name('changepassword');//
         Route::post('user/profile/changeemail', 'UserController@ChangeEmail')->name('changemail');//
         Route::post('user/store', 'UserController@store')->name('userstore');//

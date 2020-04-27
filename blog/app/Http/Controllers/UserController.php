@@ -39,8 +39,8 @@ class UserController extends Controller
             $validatedData = $request->validate([
                 'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'profession'=>['required','regex:/[0-9][a-z]/','max:50'],
-                'cin'=>['required','regex:/[0-9][a-z]/','max:50'],
+                'profession'=>['required','string','max:50'],
+                'cin'=>['required','regex:/string/','max:50'],
                 'phone' => 'required|regex:/(0)[0-9]{9}/',
                 'is_admin' => 'required',
                 'password' => ['required', 'string', 'min:8', 'confirmed']
@@ -67,8 +67,8 @@ class UserController extends Controller
         {
             $validatedData = $request->validate([
                 'name' => ['required', 'regex:/[a-z][ ]/', 'max:255'],
-                'profession'=>['required','regex:/[0-9][a-z]/','max:50'],
-                'cin'=>['required','regex:/[0-9][a-z]/','max:50'],
+                'profession'=>['required','string','max:50'],
+                'cin'=>['required','string','max:50'],
                 'phone' => 'required|regex:/(0)[0-9]{9}/'
             ]);
             $user = User::find($id = Auth::user()->_id);

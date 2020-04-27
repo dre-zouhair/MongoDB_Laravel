@@ -29,7 +29,7 @@ then run this
 ```bash
 php artisan migrate
 ```
-in mongo shel execute this 
+in Mongo shel execute this 
 ```jacascript
 db.getCollection("users").insert({
     "name": "Drioueche Zouhair",
