@@ -53,48 +53,6 @@ db.getCollection("users").insert({
     "remember_token": "",
     "is_admin": 1
 });
-db.getCollection("medicines").insert({
-    "commercial_name": "ACOL",
-    "active_substance": "Sulpiride",
-    "price": "32.90",
-    "barre_code": "64351234567",
-    "prescription": "with",
-    "rss": "10",
-    "laboratory": {
-        "name": "SANOFI",
-        "designation": "SNF"
-    },
-    "updated_at": ISODate("2020-04-27T19:54:42.753+00:00"),
-    "created_at": ISODate("2020-04-27T19:54:42.753+00:00")
-});
-db.getCollection("medicines").insert({
-    "commercial_name": "Fuicidine",
-    "active_substance": "Fuisidate de sodium",
-    "price": "25.00",
-    "barre_code": "6757697",
-    "prescription": "with",
-    "rss": "15",
-    "laboratory": {
-        "name": "LEO",
-        "designation": "LEO"
-    },
-    "updated_at": ISODate("2020-04-27T20:09:04.251+00:00"),
-    "created_at": ISODate("2020-04-27T20:09:04.251+00:00")
-});
-db.getCollection("medicines").insert({
-    "commercial_name": "Doliprane",
-    "active_substance": "Paracetamole",
-    "price": "22.20",
-    "barre_code": "6118000040217",
-    "prescription": "without",
-    "rss": "0",
-    "laboratory": {
-        "name": "bottu",
-        "designation": "b"
-    },
-    "updated_at": ISODate("2020-04-27T20:11:44.896+00:00"),
-    "created_at": ISODate("2020-04-27T20:11:44.896+00:00")
-});
 ```
 run this in the terminal
 ```bash
