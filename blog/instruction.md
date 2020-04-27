@@ -41,14 +41,18 @@ db.medicines.createIndex({"prescription": 1},);
 db.medicines.createIndex({"rss": 1},);
 db.medicines.createIndex({"laboratory.name":1},);
 db.medicines.createIndex({"laboratory.designation":1});
+```
+You can Import data from ./databse json files using mongo compass <br />
+Or run this in MongoDb Shell to registerthe admin acount
+```javascript
 db.getCollection("users").insert({
-    "name": "Drioueche Zouhair",
-    "email": "dre.zouhair@gmail.com",
+    "name": "Lil Dre",
+    "email": "dre.lil@gmail.com",
     "password": "$2y$10$cPT.M.Gyv5eZzCYvQ4/Kb.kfjXbND2z0O67u67BhW8DK//vSxiMzy",
     "updated_at": ISODate("2020-04-27T01:27:40.564+00:00"),
     "created_at": ISODate("2020-04-26T21:58:23.993+00:00"),
     "cin": "pharmacist",
-    "phone": "0625981489",
+    "phone": "0600000000",
     "profession": "pharmacist",
     "remember_token": "",
     "is_admin": 1
