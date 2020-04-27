@@ -27,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->is_admin == 1)
         return view('home');
+        return view('index');
     }
     public function chart()
     {
