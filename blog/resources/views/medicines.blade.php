@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-group">
                             <label>The price</label>
-                            <input type="text" name="price" id="price" class="form-control" />
+                            <input type="number" name="price" min="0" id="price" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label>The barre code</label>
@@ -152,7 +152,7 @@
 
                         <div class="form-group">
                             <label>RSS</label>
-                            <input type="number" name="rss" id="rss" class="form-control" required>
+                            <input type="number" name="rss" id="rss" min="0" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>The Laboratory's Name</label>
