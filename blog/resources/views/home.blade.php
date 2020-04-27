@@ -100,7 +100,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
-        
+
 
         $.ajax({
             url:"{{route('chart')}}",
@@ -109,7 +109,6 @@
             dataType: 'json',
             success:function (response) {
                 var ctx = document.getElementById('myChart');
-
                 if(response.data.data.length > 0)
                     var myChart = new Chart(ctx, {
                         type: 'pie',

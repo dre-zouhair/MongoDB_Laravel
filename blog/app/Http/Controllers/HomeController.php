@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Array_;
 use function Sodium\add;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+
         if(Auth::user()->is_admin == 1)
         return view('home');
         return view('index');
