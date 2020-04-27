@@ -35,6 +35,9 @@
                 Search
             </a>
             @if(\Illuminate\Support\Facades\Auth::user()->is_admin == 1)
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Dashboard
+                </a>
                 <a class="navbar-brand" href="{{ url('/users') }}">
                     Users List
                 </a>

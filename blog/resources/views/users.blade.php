@@ -23,6 +23,9 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 Search
             </a>
+            <a class="navbar-brand" href="{{ url('/home') }}">
+                Dashboard
+            </a>
             <a class="navbar-brand" href="{{ url('/users') }}">
                 Users List
             </a>
@@ -270,6 +273,20 @@
                 $('#deletemodal').removeAttr('class');
                 $('#deletemodal').attr('class','modal fade');
                 $.ajax({
+                    url:"{{route('userdestroy')}}",
+                    method:'get',
+                    data:{id:id},
+                    dataType:'json',
+                    success:function(data)
+                    {
+                        $('#User_table').DataTable().ajax.reload();
+                        $('#form_output').html(data.success);
+
+                    },
+                    error:function (data) {
+                        $('#form_output').html(data.error);
+                    }
+                }); $.ajax({
                     url:"{{route('userdestroy')}}",
                     method:'get',
                     data:{id:id},
