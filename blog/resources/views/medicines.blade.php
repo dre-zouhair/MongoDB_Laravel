@@ -307,8 +307,8 @@
                         {
                             $('#commercial_name').val(data.commercial_name);
                             $('#active_substance').val(data.active_substance);
-                            $('#price').val(data.price);
                             $('#rss').val(data.rss);
+                            $('#price').val(data.price);
                             $('#barre_code').val(data.barre_code);
                             if(data.prescription === "without")$('#prescriptionwithout').prop("checked", true);
                             else $('#prescriptionwith').prop("checked", true);
